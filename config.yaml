@@ -1,0 +1,44 @@
+env: "testnet"          # "testnet" | "mainnet"
+coin: "BTC"
+interval: "1m"
+
+runtime:
+  # how often we recompute (seconds); 60 is fine for 1m candles
+  loop_sleep_sec: 5
+  # candles fetched each tick (keep modest for rate limits)
+  lookback_candles: 120
+
+strategy:
+  ma_len: 20
+  vol_len: 20
+  band_mult: 1.5
+  # exit when price crosses MA (true) or use take-profit offset (false + tp_bps)
+  exit_on_ma_cross: true
+  tp_bps: 2            # only used if exit_on_ma_cross is false
+
+risk:
+  max_leverage: 1.0
+  max_position_pct_equity: 0.15
+  max_loss_per_trade_pct: 0.0075     # 0.75%
+  daily_loss_limit_pct: 0.02         # 2%
+  one_position_at_a_time: true
+  allow_short: true
+
+execution:
+  order_type: "limit"   # "limit" (v1) | "market" (emergency only)
+  limit_price_slippage_bps: 1
+  reduce_only_for_exits: true
+
+logging:
+  level: "INFO"
+  to_file: true
+  file_path: "bot.log"
+
+mode: "paper"   # "paper" | "live" (live later)
+
+paper:
+  starting_equity_usd: 10000
+  taker_fee_bps: 4.0          # conservative placeholder
+  maker_fee_bps: 2.0          # conservative placeholder
+  slippage_bps: 1.0           # applied on entry/exit fills
+  assume_taker: true          # v1: assume taker fills always
