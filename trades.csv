@@ -1,2 +1,0 @@
-ts_ms,event,side,size,fill_price,notional,fee_usd,pnl_usd,equity_usd,reason
-1772741166382,OPEN,LONG,0.02168789670777728,69169.9163,1500.1499999999999,0.6000599999999999,0.0,9999.39994,below_lower_band
