@@ -4,3 +4,4 @@ __pycache__/
 bot.log
 venv/
 *.csv
+*.jsonl

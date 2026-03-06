@@ -1,4 +1,4 @@
-env: "testnet"          # "testnet" | "mainnet"
+env: "mainnet"          # "testnet" | "mainnet"
 coin: "BTC"
 interval: "1m"
 
@@ -18,11 +18,11 @@ strategy:
 
 risk:
   max_leverage: 1.0
-  max_position_pct_equity: 0.15
-  max_loss_per_trade_pct: 0.0075     # 0.75%
-  daily_loss_limit_pct: 0.02         # 2%
+  max_position_pct_equity: 0.20   # ≈ $12 position with $61 equity
+  max_loss_per_trade_pct: 0.0075  # 0.75%
+  daily_loss_limit_pct: 0.02      # 2%
   one_position_at_a_time: true
-  allow_short: true
+  allow_short: false
 
 execution:
   order_type: "limit"   # "limit" (v1) | "market" (emergency only)
@@ -34,7 +34,7 @@ logging:
   to_file: true
   file_path: "bot.log"
 
-mode: "paper"   # "paper" | "live" (live later)
+mode: "live"   # "paper" | "live" (live later)
 
 paper:
   starting_equity_usd: 10000
